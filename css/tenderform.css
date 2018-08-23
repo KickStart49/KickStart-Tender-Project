@@ -1,0 +1,29 @@
+body{
+      background: rgb(246,248,249)!important; /* Old browsers */
+      padding-top: 30px;
+    }
+.main-section{
+	padding: 15px;
+	background:#f1f1f1;
+}
+.custom-file-control::after {
+  content: "Choose file...";
+}
+.custom-file-control::before {
+  content: "Browse";
+}
+.color{
+		background: #efefef!important;
+	}
+.mybtn{
+	background:#E8EDF0!important;
+	color: #000000!important;
+	border-right: none;
+	border-top: none;
+	border-left: none;
+}
+.list-group{
+	height:500px;
+overflow:scroll;
+
+}
