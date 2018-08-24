@@ -12,7 +12,6 @@ require_once('notification.php');
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/tenderform.js"></script>
-  
 </head>
 <body>
   

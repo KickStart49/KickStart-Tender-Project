@@ -12,7 +12,7 @@ while($datarow = mysqli_fetch_array($execute)){
 
   $form_id = $datarow["id"];
     if($cur <= $l){?>
-    <script type=\"text/javascript">
+    <script type="text/javascript">
            Notification.requestPermission().then(function(result) {
         if (result === 'denied') {
           console.log("Permission wasn't granted. Allow a retry.");
@@ -51,7 +51,7 @@ while($datarow = mysqli_fetch_array($execute)){
       }
     });
   }
-</script>";
+</script><?php
 }
 }
 ?>
