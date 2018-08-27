@@ -17,6 +17,7 @@ require_once('notification.php');
 		<!-- Linking Styles and Scripts -->
 
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/tenderform.css">
 	  	<script src="js/jquery.js"></script>
 	  	<script src="js/bootstrap.min.js"></script>
@@ -33,6 +34,11 @@ require_once('notification.php');
 
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top offset-md-2">
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">		
+			    <div class="morph-shape" data-morph-open="M158.5,0H0v53.1c0,0,19.6-4.6,66-0.2s60.5-3.8,92.5-0.1V0z" data-morph-trans="							M158.5,0H0v53.1c0,0,35.4,15.4,82,13.8s76.5-14.1,76.5-14.1V0z">
+		          	<svg width="100%" height="100%" viewBox="0 0 158.5 61.2" preserveAspectRatio="none">
+		            	<path fill="none" d="M158.5,0H0v15.6c20.9-12.8,38.5,19.5,73.5-10.9s70.2-7.8,8" style="fill:#00c3ff;" />
+		          	</svg>
+		        </div>
 			    <ul class="navbar-nav mr-auto">
 			        <li class="nav-item dropdown">
 				        <a class="navbar-brand" href="#">
@@ -40,23 +46,22 @@ require_once('notification.php');
 						    KickStart
 						</a>
 					</li>
-					<li class="nav-item dropdown navbar-right">
-				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				          Notification
+					<li class="nav-item">
+				        <a class="nav-link" href="#">
+				          
 				        </a>
-				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <a class="dropdown-item" href="#"><b>Message</b></a>
-				        </div>
-			      	</li>
-				    <li class="nav-item dropdown navbar-right">
-				      	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"    			aria-expanded="false">
-				       		Prahar
-				 	    </a>
-				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <a class="dropdown-item" href="#">Log out</a>
-				        </div>
-			      	</li>
+				    </li>
 			    </ul>
+			    <ul class="nav navbar-nav navbar-right">
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle custom-dropdown" data-toggle="dropdown" role="button" aria-expanded="false">
+					    Prahar<span class="caret"></span>
+					  </a>
+					  <ul class="dropdown-menu alert alert-secondary" role="menu">
+			            <li><a href="#">Logout</a></li>
+			          </ul>
+			        </li>
+		      	</ul>
 			</div>
 		</nav>
 		
@@ -92,15 +97,28 @@ require_once('notification.php');
 			    return false;
 			}
 			width_resize();
+			$(document).ready(function(){
+			    $(".dropdown").hover(            
+			        function() {
+			            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+			            $(this).toggleClass('open');        
+			        },
+			        function() {
+			            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+			            $(this).toggleClass('open');       
+			        }
+			    );
+			});
 		</script>
 		<!-- ********************************************************** New Tender **************************************************** -->
 		<!-- ********************************************************** New Tender **************************************************** -->
 
 		<section id="NewTender" class="col-10 offset-md-2">
+			
 			<div class="container">
 			    <div class="row">
 			      <div class="col-12 border rounded main-section">
-			        <h3 class="text-center text-inverse">Submit Tender Details !</h3>
+			      	<h3 style="position: relative;" class="text-center text-inverse">Submit Tender Details !</h3>
 			        <hr>
 			        <form class="container" action="formsubmit.php" method="post" id="needs-validation" novalidate enctype="multipart/form-data"> 
 			            <div class="col-12">
@@ -135,7 +153,7 @@ require_once('notification.php');
 			            </div>
 			            <div class="col-12">
 			              <div class="form-group">
-			                <label class="text-inverse" for="validationCustom06">Bid Security/EMD (INR)</label>
+			                <label class="text-inverse" for="validationCustom06">Bid Security/EMD (INR)</label>d
 			                <input type="datetime-local" class="form-control" name="BidEMD" id="validationCustom06"  required>
 			              </div>  
 			            </div>
