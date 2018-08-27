@@ -31,7 +31,7 @@ require_once('notification.php');
 		<!-- ********************************************************** Top Navbar **************************************************** -->
 		<!-- ********************************************************** Top Navbar **************************************************** -->
 
-		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top offset-md-3 col-9">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top offset-md-2">
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">		
 			    <ul class="navbar-nav mr-auto">
 			        <li class="nav-item dropdown">
@@ -63,7 +63,7 @@ require_once('notification.php');
 		<!-- ********************************************************** Sidebar **************************************************** -->
 		<!-- ********************************************************** Sidebar **************************************************** -->
 
-		<ul class="nav nav-tabs flex-column navbar-dark bg-dark col-3 getSidebarWidth sidebar">
+		<ul class="nav nav-tabs flex-column navbar-dark bg-dark col-2 getSidebarWidth sidebar">
 		  <hr>
 		  <li class="nav-item">
 		    <a class="nav-link sidebar-link active" href="#NewTender">New Tender</a>
@@ -96,7 +96,7 @@ require_once('notification.php');
 		<!-- ********************************************************** New Tender **************************************************** -->
 		<!-- ********************************************************** New Tender **************************************************** -->
 
-		<section id="NewTender" class="col-9 offset-md-3">
+		<section id="NewTender" class="col-10 offset-md-2">
 			<div class="container">
 			    <div class="row">
 			      <div class="col-12 border rounded main-section">
@@ -237,7 +237,7 @@ require_once('notification.php');
 		<!-- ********************************************************** Upload Documents **************************************************** -->
 		<!-- ********************************************************** Upload Documents **************************************************** -->
 
-		<section id="UploadDocuments" class="col-9 offset-md-3">
+		<section id="UploadDocuments" class="col-10 offset-md-2">
 			<div class="container">
 				<?php
 					$dir    = 'documents/'; 

@@ -16,6 +16,10 @@ body::-webkit-scrollbar-thumb {
 }
 body::::-webkit-resizer{
 }
+nav{
+	overflow: hidden;
+	border-bottom-right-radius: 10px;
+}
 nav a{
 	color: #d3d3d3!important;
 }
@@ -26,7 +30,7 @@ nav a{
 	background: #19212B!important;
 }
 ul li .sidebar-link{	
-	font-size: 1.3em;
+	font-size: 1.2em;
 	color:#efefef; 	
 	border: none!important;	
 }
