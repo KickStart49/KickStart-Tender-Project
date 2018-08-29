@@ -1,5 +1,7 @@
 
-
+html{
+	scroll-behavior: smooth;
+}
 /*Top Navbar*/
 
 	nav{
@@ -27,29 +29,42 @@
 	}
 	
 /*Sidebar*/
+.vertical-menu {
+    height:100vh;
+    position: fixed;
+    top:0%;
+    background-color: #19212B;
+}
 
-	.bg-dark{
-		background: #19212B!important;
-	}
-	ul li .sidebar-link{	
-		font-size: 1.2em;
-		color:#efefef; 	
-		border: none!important;	
-	}
-	ul li .sidebar-link:hover{
-		color:#44A3CE!important;
-		background-color: #2B323C!important;	
-	}
-	ul li .sidebar-link.active{
-		color:#44A3CE!important;
-		background-color: #2B323C!important;	
-	}
-	.sidebar{
-		width: 100%;
-		top: 0;
-		position:fixed;
-		height:100vh;
-	}
+
+.main-menu{
+    box-shadow: 
+    	inset 0px 3px 2px -4px #BCBFC2,
+        inset 0px -3px 2px -4px #BCBFC2;
+
+    padding-bottom: 5%;
+}
+.nav-link{
+    text-align: left;
+    font-size: 1em; 
+}
+.vertical-menu .header {
+    color: #ffffff;
+    padding-top: 10%;
+    padding-bottom: 6%;
+}
+.vertical-menu .active a{
+    color: #4CB8E9!important;
+}
+.vertical-menu .sub-menu a{
+    color: #BCBFC2;
+    transition: all 0.5s;
+}
+
+.vertical-menu .sub-menu a:hover,.main-menu{
+    background-color: #2B323C;
+}
+
 
 /*Undefined*/
 
@@ -69,16 +84,46 @@
 
 /*Sections*/
 
-	#NewTender{
+	#NewTender,#UploadDocuments{
+		background: #ECEFF1;
 		position: relative;
 		min-height: 100vh;
 		width : 90%;
+		box-shadow: 
+    	inset 0px 5px 10px -5px #d3d3d3,
+        inset 0px -5px 10px -5px #d3d3d3;
+        padding-bottom: 5%;
 	}
-	#UploadDocuments{
+	.design{
+		
+		height: 80vh;
+		background: #039BE5;
+		width: 100%;
+		position: absolute;
+		top:1%;
+		padding: 10%;
+		left:0%;
+		z-index: 1;
+	}
+	.design h3{
+		font-family: 'Josefin Sans', sans-serif;
+		color: #ffffff;
+		font-weight: bold;
+		font-size: 1.5em;
+	}
+	.design p{
+		font-family:  Comic Sans MS;
+		color: #ECEFF1;
+
+	}
+	.main-section{
+box-shadow: 0px 0px 10px 0px rgba(119, 119, 119, 0.75);
+-moz-box-shadow: 0px 0px 10px 0px rgba(119, 119, 119, 0.75);
+-webkit-box-shadow: 0px 0px 10px 0px rgba(119, 119, 119, 0.75);
+		border-radius: 1%!important;
 		position: relative;
-		min-height: 100vh;
-		text-align: center;
-		width : 90%;
+		margin-top:20%;
+		z-index: 2;
 	}
 	#UploadDocuments .container,#NewTender .container{
 		padding-top:7%;

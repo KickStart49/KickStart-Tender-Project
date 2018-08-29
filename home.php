@@ -17,7 +17,9 @@ require_once('notification.php');
 		<!-- Linking Styles and Scripts -->
 
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rancho&effect=ice|3d-float">
+
 		<link rel="stylesheet" href="css/tenderform.css">
 	  	<script src="js/jquery.js"></script>
 	  	<script src="js/bootstrap.min.js"></script>
@@ -68,57 +70,53 @@ require_once('notification.php');
 		<!-- ********************************************************** Sidebar **************************************************** -->
 		<!-- ********************************************************** Sidebar **************************************************** -->
 
-		<ul class="nav nav-tabs flex-column navbar-dark bg-dark col-2 getSidebarWidth sidebar">
-		  <hr>
-		  <li class="nav-item">
-		    <a class="nav-link sidebar-link active" href="#NewTender">New Tender</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link sidebar-link" href="#UploadDocuments">Upload Documents</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link sidebar-link" href="#">Link</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link sidebar-link disabled" href="#">Disabled</a>
-		  </li>
-		</ul>
-		<script type="text/javascript">
-			$(".nav a").on("click", function(){
-			   $(".nav").find(".active").removeClass("active");
-			   $(this).addClass("active");
-			});
-		</script>
-		<script type="text/javascript">
-			function width_resize(){
-			    var sidebar_width = $('.getSidebarWidth').width();
-			    $('.nav-link').css('width', (sidebar_width + 12));
-			    
-			    return false;
-			}
-			width_resize();
-			$(document).ready(function(){
-			    $(".dropdown").hover(            
-			        function() {
-			            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
-			            $(this).toggleClass('open');        
-			        },
-			        function() {
-			            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
-			            $(this).toggleClass('open');       
-			        }
-			    );
-			});
-		</script>
+		<ul id="accordion1" class="nav nav-pills flex-column vertical-menu navbar-dark col-2 getSidebarWidth sidebar">
+  <li class="nav-item main-menu">
+    <a class="nav-link header" data-toggle="collapse" href="#item-1" data-parent="#accordion1">Dashboard</a>
+    <div id="item-1" class="collapse">
+      <ul class="nav flex-column ml-0 sub-menu">
+        <li class="nav-item">
+          <a class="nav-link 1" href="#1"><i class="fa fa-list"></i>&nbsp;&nbsp;TenderList</a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item main-menu">
+    <a class="nav-link header" data-toggle="collapse" href="#item-2" data-parent="#accordion1">Upload</a>
+    <div id="item-2" class="collapse">
+      <ul class="nav flex-column ml-0 sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" href="#NewTender"><i class="fa fa-upload"></i>&nbsp;&nbsp;New Tender</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#UploadDocuments"><i class="fa fa-file-upload"></i>&nbsp;&nbsp;&nbsp;Documents</a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item main-menu">
+    <a class="nav-link header" data-toggle="collapse" href="#item-3" data-parent="#accordion1">Modify</a>
+    <div id="item-3" class="collapse">
+      <ul class="nav flex-column ml-0  sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" href="#3"><i class="fa fa-list"></i>&nbsp;&nbsp;Edit Tender</a>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>
+
+		
+		
 		<!-- ********************************************************** New Tender **************************************************** -->
 		<!-- ********************************************************** New Tender **************************************************** -->
 
 		<section id="NewTender" class="col-10 offset-md-2">
-			
+			<div class="design"><h3>Fill Up New Tender Form !</h3><br><p>If you want to upload more documents,then go to the documents section.</p></div>
 			<div class="container">
 			    <div class="row">
-			      <div class="col-12 border rounded main-section">
-			      	<h3 style="position: relative;" class="text-center text-inverse">Submit Tender Details !</h3>
+			      <div class="col-9	 border rounded main-section offset-md-1">
+			      	<h3 style="position: relative;" class="text-center text-inverse heading font-effect-ice">Tender</h3>
 			        <hr>
 			        <form class="container" action="formsubmit.php" method="post" id="needs-validation" novalidate enctype="multipart/form-data"> 
 			            <div class="col-12">
@@ -256,16 +254,17 @@ require_once('notification.php');
 		<!-- ********************************************************** Upload Documents **************************************************** -->
 
 		<section id="UploadDocuments" class="col-10 offset-md-2">
+			<div class="design"><h3>Upload Documents !</h3><br><p>If you want to upload more documents,then go to the documents section.</p></div>
 			<div class="container">
 				<?php
 					$dir    = 'documents/'; 
 					$files2 = scandir($dir, 1);
 					$n=sizeof($files2);
 				?>
-	            <div class="col-12 border rounded main-section">
+	            <div class="col-9 border rounded main-section offset-md-1">
 	                <div class="list-group">
-		                <button type="button" class="text-center text-inverse list-group-item list-group-item-action active mybtn">
-		                	All Uploaded Documents
+		                <button type="button" class="text-center text-inverse list-group-item list-group-item-action active mybtn " style="background: none!important;">
+		                	<h3 class="font-effect-ice heading">All Uploaded Documents</h3>
 		                </button>
 		                <hr>
 						<?php
@@ -290,84 +289,39 @@ require_once('notification.php');
                 </div>
 			</div>	  
 		</section>
-<!-- <div class="modal fade" id="myModal">
-	    <div class="modal-dialog modal-dialog-centered">
-	      <div class="modal-content">
-	      
-	  <div class="modal-header">
-	  
-	          <h4 class="modal-title">Tender List</h4>
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        </div>
+	<script type="text/javascript">
+			function width_resize(){
+			    var sidebar_width = $('.getSidebarWidth').width();
+			    $('.nav-link').css('width', (sidebar_width + 12));
+			    
+			    return false;
+			}
+			width_resize();
+			$(document).ready(function(){
+			    $(".dropdown").hover(            
+			        function() {
+			            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+			            $(this).toggleClass('open');        
+			        },
+			        function() {
+			            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("4000");
+			            $(this).toggleClass('open');       
+			        }
+			    );
+			    $('.collapse').on('show.bs.collapse', function () {
+			      $(this).parent().css({ 'background-color' : '#19212B'});
+			    });
+			    $('.collapse').on('hidden.bs.collapse', function () {
+			      $(this).parent().css({ 'background-color' : '#2B323C'});
+			    });
 
-	        <div class="container">
-			 <h2 style="text-align: center">Details</h2>
-			 <table class="table table-bordered position">
-	      		<tr>
-	        		<th>Form-no.</th>
-	        		<td>hfhfhjghjgjjhjjhjhgh</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Department Name</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Name of Work</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Estimated contract value (INR)</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Bidding Type</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Tender Fee</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Bid Security/EMD (INR)</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Bid Document Downloading Start Date (INR)</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Bid Document Downloading End Date (INR)</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Pre Bid Meeting</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Last Date & Time for Receipt of Bids</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Submission of Documents</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Bid Operating Date Technical Bid</th>
-	        		<td>1</td>
-	      		</tr>
-	      		<tr>
-	        		<th>Bid Operating Date Commercial Bid</th>
-	        		<td>1</td>
-	      		</tr>
-	      	</table>
-	    	
-	</div>
-	        
-	        <div class="modal-footer">
-	         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        </div>
-	    </div>
-	</div>
-	</div> -->
+			    $(".sub-menu a").on("click", function(){
+			     $(".nav").find(".active").removeClass("active");
+			     $(this).parent().addClass("active");
+			    });
+			    $('.collapse').collapse();
+			    $('.1').parent().addClass("active");
+			});
+		</script>
 </body>
 </html>
