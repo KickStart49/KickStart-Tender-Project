@@ -84,7 +84,7 @@ html{
 
 /*Sections*/
 
-	#NewTender,#UploadDocuments{
+	#NewTender,#UploadDocuments,#TenderList,#EditTender{
 		background: #ECEFF1;
 		position: relative;
 		min-height: 100vh;
@@ -125,9 +125,10 @@ box-shadow: 0px 0px 10px 0px rgba(119, 119, 119, 0.75);
 		margin-top:20%;
 		z-index: 2;
 	}
-	#UploadDocuments .container,#NewTender .container{
-		padding-top:7%;
+	#UploadDocuments .container,#NewTender .container,#TenderList .container,#EditTender .container{
+		padding-top:8%;
 	}
+	
 
 /*SVG Canvas*/
 

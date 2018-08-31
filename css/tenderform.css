@@ -3,7 +3,6 @@
 	padding: 30px;
 	background:#ffffff;
 	width: 100%!important;
-
 }
 input{
 	border-radius: 0;
@@ -41,8 +40,8 @@ input:focus{
 }
 .list-group{
 	height:500px;
-overflow:scroll;
-padding: 20px;
+	overflow:scroll;
+	padding: 20px;
 }
 .list-group::-webkit-scrollbar {
 	}
