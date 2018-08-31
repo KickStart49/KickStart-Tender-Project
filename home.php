@@ -21,18 +21,7 @@ require_once('notification.php');
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rancho&effect=ice|3d-float">
 		<link rel="stylesheet" type="text/css" href="css/datatable.css">
 		<link rel="stylesheet" type="text/css" href="css/tenderform.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	  	<script src="js/jquery.js"></script>
-	  	<script type="text/javascript" src="js/datatable.js"></script>
-	  	<script type="text/javascript">
-	  		$(document).ready( function () {
-			    $('#myTable').DataTable();
-			} );
-	  	</script>
-	  	<script src="js/bootstrap.min.js"></script>
-	  	<script src="js/tenderform.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/AdminPanel.css">
-		<script type="text/javascript" src="js/AdminPanel.js"></script>
+		
 
 	</head>
 
@@ -564,39 +553,14 @@ require_once('notification.php');
 				</div>
 			</div>
 		</section>
-	<script type="text/javascript">
-			function width_resize(){
-			    var sidebar_width = $('.getSidebarWidth').width();
-			    $('.nav-link').css('width', (sidebar_width + 12));
-			    
-			    return false;
-			}
-			width_resize();
-			$(document).ready(function(){
-			    $(".dropdown").click(            
-			        function() {
-			            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
-			            $(this).toggleClass('open');        
-			        },
-			        function() {
-			            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("4000");
-			            $(this).toggleClass('open');       
-			        }
-			    );
-			    $('.collapse').on('show.bs.collapse', function () {
-			      $(this).parent().css({ 'background-color' : '#19212B'});
-			    });
-			    $('.collapse').on('hidden.bs.collapse', function () {
-			      $(this).parent().css({ 'background-color' : '#2B323C'});
-			    });
 
-			    $(".sub-menu a").on("click", function(){
-			     $(".nav").find(".active").removeClass("active");
-			     $(this).parent().addClass("active");
-			    });
-			    $('.collapse').collapse();
-			    $('.1').parent().addClass("active");
-			});
-		</script>
-</body>
+		<script src="js/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	  	<script type="text/javascript" src="js/datatable.js"></script>
+	  	<script src="js/bootstrap.min.js"></script>
+	  	<script src="js/custom.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/AdminPanel.css">
+		<script type="text/javascript" src="js/AdminPanel.js"></script>
+
+	</body>
 </html>
