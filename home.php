@@ -329,7 +329,7 @@ require_once('notification.php');
 				?>
 	            <div class="col-9 border rounded main-section offset-md-1">
 	                <div class="list-group">
-		                <button type="button" class="text-center text-inverse list-group-item list-group-item-action active mybtn " style="background: none!important;">
+		                <button type="button" class="text-center text-inverse list-group-item list-group-item-action active mybtn " style="background: none!important;display: none;">
 		                	
 		                </button>
 		                <hr>
