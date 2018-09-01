@@ -1,6 +1,6 @@
 <?php 
 
-$connect = mysqli_connect("127.0.0.1","root","","wordpress");
+$connect = mysqli_connect("127.0.0.1","root","","Kickstart");
 $execute=mysqli_query($connect,"SELECT * FROM tender");
 $ra = mysqli_num_rows($execute);
 $cur = date("U");

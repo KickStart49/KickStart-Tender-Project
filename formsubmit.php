@@ -40,6 +40,6 @@ if(isset($_POST["submit"])){
 	
 
 }
-echo '<script>location.href="TenderForm";</script>';
+echo '<script>location.href="home";</script>';
 
 ?>

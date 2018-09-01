@@ -1,4 +1,4 @@
 <?php
 
-$connect = mysqli_connect("127.0.0.1","root","","wordpress");
+$connect = mysqli_connect("127.0.0.1","root","","Kickstart");
 ?>

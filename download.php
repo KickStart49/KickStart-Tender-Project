@@ -1,5 +1,5 @@
 <?php 
-$download=explode(' ',$_GET['n']);
+$download=explode(' ',$_POST['download']);
 use setasign\Fpdi\Fpdi;
 
 require_once('fpdf/fpdf.php');

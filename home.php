@@ -2,6 +2,9 @@
 /*
 
 */
+
+session_start();
+require_once("initialize.php");
 require_once('notification.php');
 ?>
 <!DOCTYPE html>
@@ -21,7 +24,7 @@ require_once('notification.php');
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rancho&effect=ice|3d-float">
 		<link rel="stylesheet" type="text/css" href="css/datatable.css">
 		<link rel="stylesheet" type="text/css" href="css/tenderform.css">
-		
+		<link rel="stylesheet" type="text/css" href="css/AdminPanel.css">
 
 	</head>
 
@@ -121,50 +124,41 @@ require_once('notification.php');
 					      		</tr>
 					    	</thead>
 					    	<tbody class="position">
-						      <tr>
-						        <td>1</td>
-						        <td>abc</td>
-						        <td>18/8/18</td>
-						        <td>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-file-download"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-edit"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-eye"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-trash"></button></a>
-						      	</td>
-						      </tr>
-						      <tr>
-						        <td>2</td>
-						        <td>xyz</td>
-						        <td>18/8/18</td>
-						     	   <td>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-file-download"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-edit"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-eye"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-trash"></button></a>
-						      	</td>
-						      </tr>
-						      <tr>
-						        <td>2</td>
-						        <td>xyz</td>
-						        <td>18/8/18</td>
-						     	   <td>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-file-download"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-edit"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-eye"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-trash"></button></a>
-						      	</td>
-						      </tr>
-						      <tr>
-						        <td>2</td>
-						        <td>xyz</td>
-						        <td>18/8/18</td>
-						     	   <td>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-file-download"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-edit"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-eye"></button></a>
-						        <a href="#"><button type="submit" class="space btn btn-default fa fa-trash"></button></a>
-						      	</td>
-						      </tr>
+					    		<?php
+								 	$connect = mysqli_connect("127.0.0.1","root","","Kickstart");
+								    $execute=mysqli_query($connect,"SELECT * FROM tender");
+								    $no = 0;
+									while($datarow = mysqli_fetch_array($execute)){
+											$id = $datarow["id"];
+											$Department = $datarow["Department"];
+											$Work = $datarow["Work"];
+											$Contract = $datarow["Contract"];
+											$BidType = $datarow["BidType"];
+											$TenderFee = $datarow["TenderFee"];
+											$BidEMD = $datarow["BidEMD"];
+											$StartDate = $datarow["StartDate"];
+											$EndDate = $datarow["EndDate"];
+											$PreBid = $datarow["PreBid"];
+											$Receipt = $datarow["Receipt"];
+											$Submission = $datarow["Submission"];
+											$TechnicalBid = $datarow["TechnicalBid"];
+											$CommercialBid = $datarow["CommercialBid"];	
+								      		$download = $datarow["download"];
+								      		$no++;
+								    ?>
+							      <tr>
+							        <td><?php echo $no; ?></td>
+							        <td><?php echo $Department; ?></td>
+							        <td><?php echo $EndDate; ?></td>
+							        <td>
+							        <a data-download="<?php echo $download; ?>" class="downloadtender"><button type="submit" class="space btn btn-default fa fa-file-download"></button></a>
+							        <a href="#EditTender"><button type="submit" class="space btn btn-default fa fa-edit"></button></a>
+							        <a href="#" class="ViewTender" data-toggle="modal" data-id="<?php echo $id; ?>"><button type="submit" class="space btn btn-default fa fa-eye"></button></a>
+							        <a href="#" class="deletetender" data-toggle="modal" data-id="<?php echo $id; ?>"><button type="submit" class="space btn btn-default fa fa-trash"></button></a>
+							      	</td>
+							      </tr>
+							      <?php } ?>
+						      
 					    	</tbody>
 				  		</table>  
 					</div>
@@ -327,7 +321,7 @@ require_once('notification.php');
 					$files2 = scandir($dir, 1);
 					$n=sizeof($files2);
 				?>
-	            <div class="col-9 border rounded main-section offset-md-1">
+	            <div class="col-6 border rounded main-section offset-md-2">
 	                <div class="list-group">
 		                <button type="button" class="text-center text-inverse list-group-item list-group-item-action active mybtn " style="background: none!important;display: none;">
 		                	
@@ -361,7 +355,7 @@ require_once('notification.php');
 
 		<section id="EditTender" class="col-10 offset-md-2">
 			<div class="design"><h3>Edit Tenders !</h3><br><p>Changing your profile options lets </p></div>
-			<div class="container" >
+			<div class="container searchedit" >
 				<div class="row">
 			      <div class="col-9	border rounded main-section offset-md-1">
 					<div class="input-group">
@@ -379,179 +373,18 @@ require_once('notification.php');
 		                    </ul>
 		                </div>
 		                <input type="hidden" name="search_param" value="all" id="search_param">         
-		                <input type="text" class="form-control" name="x" placeholder="Search term...">
-		                <span class="input-group-btn">
+		                <input type="text" class="form-control" id="searchTender" placeholder="Search term...">
+		                <span class="input-group-btn search">
 		                    <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
 		                </span>
 		            </div>
+		            <div class="doedit" style="display: none;">
+		            		
+				    </div>
 		        </div>
 		    </div>
 		</div>
-		<div class="container" >
-			<div class="row">
-			    <div class="col-9 border rounded main-section offset-md-1">
-					<div class="card">
-		        		<div class="card-body">
-		        			<div class="input-group">
-                				<div class="input-group-btn search-panel">
-				                    <button type="button" class="btn btn-default dropdown dropdown-toggle" data-toggle="dropdown">
-				                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
-				                    </button>
-				                    <ul class="dropdown-menu" role="menu">
-				                      <li><a href="#contains">Contains</a></li>
-				                      <li><a href="#its_equal">It's equal</a></li>
-				                      <li><a href="#greather_than">Greather than ></a></li>
-				                      <li><a href="#less_than">Less than < </a></li>
-				                      <li class="divider"></li>
-				                      <li><a href="#all">Anything</a></li>
-				                    </ul>
-				                </div>
-				                <input type="hidden" name="search_param" value="all" id="search_param">         
-				                <input type="text" class="form-control" name="x" placeholder="Search term...">
-				                <span class="input-group-btn">
-				                    <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
-				                </span>
-				            </div><br><br>
-				            <div class="row">
-				                <div class="col-md-12">
-				                    <h4>Form Details</h4>
-				                    <hr>
-				                </div>
-				            </div>
-				            <div class="row">
-				                <div class="col-md-12">
-					                <form action="formsubmit.php" method="post" id="needs-validation" novalidate enctype="multipart/form-data"> 
-							            <div class="col-12">
-							               <div class="form-group">
-							                <label class="text-inverse" for="validationCustom01">Department Name</label>
-							                <input type="text" class="form-control" name="Department" id="validationCustom01"  required>
-							              </div>
-							            </div>
-							            <div class="col-12">
-							              <div class="form-group">
-							                <label class="text-inverse" for="validationCustom02">Name of Work</label>
-							                <input type="text" class="form-control" name="Work" id="validationCustom02"  required>
-							              </div>  
-							            </div>
-							            <div class="col-12">
-							               <div class="form-group">
-							                <label class="text-inverse" for="validationCustom03">Estimated contract value (INR)</label>
-							                <input type="number" class="form-control" name="Contract" id="validationCustom03"  required>
-							              </div>
-							            </div>
-							            <div class="col-12">
-							              <div class="form-group">
-							                <label class="text-inverse" for="validationCustom04">Bidding Type</label>
-							                <input type="text" class="form-control" name="BidType" id="validationCustom04"  required>
-							              </div>  
-							            </div>
-							            <div class="col-12">
-							               <div class="form-group">
-							                <label class="text-inverse" for="validationCustom05">Tender Fee</label>
-							                <input type="number" class="form-control" name="TenderFee" id="validationCustom05"  required>
-							              </div>
-							            </div>
-							            <div class="col-12">
-							              <div class="form-group">
-							                <label class="text-inverse" for="validationCustom06">Bid Security/EMD (INR)</label>d
-							                <input type="datetime-local" class="form-control" name="BidEMD" id="validationCustom06"  required>
-							              </div>  
-							            </div>
-							            <div class="col-12">
-							              <div class="form-group">
-							                <label class="text-inverse" for="validationCustom07">Bid Document Downloading Start Date (INR)</label>
-							                <input type="datetime-local" class="form-control" name="StartDate" id="validationCustom07"  required>
-							              </div>  
-							            </div>
-							            <div class="col-12">
-							              <div class="form-group">
-							                <label class="text-inverse" for="validationCustom08">Bid Document Downloading End Date (INR)</label>
-							                <input type="datetime-local" class="form-control" name="EndDate" id="validationCustom08"  required>
-							              </div>  
-							            </div>
-							            <div class="col-12">
-							              <div class="form-group">
-							                <label class="text-inverse" for="validationCustom09">Pre Bid Meeting</label>
-							                <input type="datetime-local" class="form-control" name="PreBid" id="validationCustom09"  required>
-							              </div>  
-							            </div>
-							            <div class="col-12">
-							              <div class="form-group">
-							                <label class="text-inverse" for="validationCustom010">Last Date & Time for Receipt of Bids</label>
-							                <input type="datetime-local" class="form-control" name="Receipt" id="validationCustom010"  required>
-							              </div>  
-							            </div>
-							            <div class="col-12">
-							              <div class="form-group">
-							                <label class="text-inverse" for="validationCustom011">Submission of Documents</label>
-							                <input type="datetime-local" class="form-control" name="Submission" id="validationCustom011" required>
-							              </div>  
-							            </div>
-							            <div class="col-12">
-							              <div class="form-group">
-							                <label class="text-inverse" for="validationCustom012">Bid Operating Date Technical Bid</label>
-							                <input type="datetime-local" class="form-control" name="TechnicalBid" id="validationCustom012" required>
-							              </div>  
-							            </div>
-							            <div class="col-12">
-							              <div class="form-group">
-							                <label class="text-inverse" for="validationCustom013">Bid Operating Date Commercial Bid</label>
-							                <input type="datetime-local" class="form-control" name="CommercialBid" id="validationCustom013" required>
-							              </div>  
-							            </div>
-							             <?php
-											$dir    = 'documents/'; 
-											$files2 = scandir($dir, 1);
-											$n=sizeof($files2);
-
-
-										?>
-							            <div class="col-12">
-							              <div class="form-group">
-							                <div class="row">
-							                  <div class="list-group col-6">
-							                    <button type="button" class="list-group-item list-group-item-action active mybtn">
-							                      Select The Required Documents
-							                    </button>
-												<?php
-												$f1 = array();
-												for($i=0; $i<=$n-3; $i++)
-												{
-												echo '
-												   <input type="button" class="form-control select list-group-item list-group-item-action" value="'.$files2[$i].'">
-												';
-												array_push($f1,"documents/$files2[$i]");
-												}
-												$f1 = implode(' ',$f1);
-
-												/* */
-												?>
-							                  </div>
-							                  <div class="list-group list2 col-6">
-							                    <button type="button" class="list-group-item list-group-item-action active mybtn">
-							                      Documents Selected
-							                    </button>
-							                  </div>
-							                </div>
-							              </div>  
-							            </div>
-							           <input type="hidden" class="form-control" value="" name="docarr" id="docarr">
-							            <div class="form-group">
-							              <input type="file" class="form-control" name="maindoc" id="validatedCustomFile" required>
-							              <div class="invalid-feedback">Please Upload your Tender Document</div>
-							            </div>
-							          <hr>
-							          <div class="row">
-							            <div class="col-lg-12 col-sm-12 col-12 text-center">
-							                <button class="btn btn-primary" name="submit" type="submit">Save Changes</button>
-							            </div>
-							          </div>  
-						        </form>
-				            </div>  
-				        </div>
-				    </div>
-				</div>
-			</div>
+		
 		</section>
 
 		<script src="js/jquery.js"></script>
@@ -559,8 +392,37 @@ require_once('notification.php');
 	  	<script type="text/javascript" src="js/datatable.js"></script>
 	  	<script src="js/bootstrap.min.js"></script>
 	  	<script src="js/custom.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/AdminPanel.css">
-		<script type="text/javascript" src="js/AdminPanel.js"></script>
+		
+<!-- The Modal -->
+  	<div class="modal fade" id="ViewTender">
+    	<div class="modal-dialog modal-dialog-centered">
+      		<div class="modal-content">
+      
+        <!-- Modal Header -->
+        		<div class="modal-header">
+          			<h4 class="modal-title " id="TenderId"></h4>
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		</div>
+        
+        <!-- Modal body -->
+        		<div class="modal-body">
+          			<div class="container">
 
+			 			<h2 style="text-align: center">Details</h2>
+						<table class="table table-bordered position tenderviewtable">
+			 				
+				      	</table>
+		    		</div>
+		    	</div>
+        
+        <!-- Modal footer -->
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        		</div>
+        
+      		</div>
+    	</div>
+  	</div>
 	</body>
 </html>
+
