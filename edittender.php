@@ -32,11 +32,12 @@
 				            </div>
 				            <div class="row">
 				                <div class="col-md-12">
-					                <form action="formsubmit.php" method="post" id="needs-validation" novalidate enctype="multipart/form-data"> 
+					                <form action="formedit.php" method="post" id="edit-validation" novalidate enctype="multipart/form-data"> 
 							            <div class="col-12">
 							               <div class="form-group">
 							                <label class="text-inverse" for="validationCustom01">Department Name</label>
 							                <input type="text" class="form-control" name="Department" id="validationCustom01" value="<?php echo $Department;?>"  required>
+							                <input type="text" class="form-control hidden" name="id" id="validationCustom01" value="<?php echo $id;?>"  required>
 							              </div>
 							            </div>
 							            <div class="col-12">

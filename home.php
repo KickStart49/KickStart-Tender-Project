@@ -25,10 +25,13 @@ require_once('notification.php');
 		<link rel="stylesheet" type="text/css" href="css/datatable.css">
 		<link rel="stylesheet" type="text/css" href="css/tenderform.css">
 		<link rel="stylesheet" type="text/css" href="css/AdminPanel.css">
+		<link rel="stylesheet" href="css/owl.theme.css">
+		<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/owl.carousel.css"> 	
 
 	</head>
 
-	<body>
+	<body data-spy="scroll" data-offset="10" data-target="#accordion1">
 
 		<!-- ********************************************************** Top Navbar **************************************************** -->
 		<!-- ********************************************************** Top Navbar **************************************************** -->
@@ -69,13 +72,18 @@ require_once('notification.php');
 		<!-- ********************************************************** Sidebar **************************************************** -->
 		<!-- ********************************************************** Sidebar **************************************************** -->
 
-		<ul id="accordion1" class="nav nav-pills flex-column vertical-menu navbar-dark col-2 getSidebarWidth sidebar">
+		<div id="accordion1" class="nav nav-pills flex-column vertical-menu navbar-dark col-2 getSidebarWidth sidebar" data-spy="affix">
+		  
+			<li class="nav-item main-menu">
+		    <a class="nav-link header" ><img src="images/capture.png" style="width: 100%;"></a>
+		    
+		  </li>
 		  <li class="nav-item main-menu">
 		    <a class="nav-link header" data-toggle="collapse" href="#item-1" data-parent="#accordion1">Dashboard</a>
 		    <div id="item-1" class="collapse">
 		      <ul class="nav flex-column ml-0 sub-menu">
 		        <li class="nav-item">
-		          <a class="nav-link 1" href="#TenderList"><i class="fa fa-list"></i>&nbsp;&nbsp;TenderList</a>
+		          <a class="nav-link 1 " href="#TenderList"><i class="fa fa-list"></i>&nbsp;&nbsp;TenderList</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -85,10 +93,10 @@ require_once('notification.php');
 		    <div id="item-2" class="collapse">
 		      <ul class="nav flex-column ml-0 sub-menu">
 		        <li class="nav-item">
-		          <a class="nav-link" href="#NewTender"><i class="fa fa-upload"></i>&nbsp;&nbsp;New Tender</a>
+		          <a class="nav-link " href="#NewTender"><i class="fa fa-upload"></i>&nbsp;&nbsp;New Tender</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="#UploadDocuments"><i class="fa fa-file-upload"></i>&nbsp;&nbsp;&nbsp;Documents</a>
+		          <a class="nav-link " href="#UploadDocuments"><i class="fa fa-file-upload"></i>&nbsp;&nbsp;&nbsp;Documents</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -98,19 +106,19 @@ require_once('notification.php');
 		    <div id="item-3" class="collapse">
 		      <ul class="nav flex-column ml-0  sub-menu">
 		        <li class="nav-item">
-		          <a class="nav-link" href="#EditTender"><i class="fa fa-list"></i>&nbsp;&nbsp;Edit Tender</a>
+		          <a class="nav-link " href="#EditTender"><i class="fa fa-list"></i>&nbsp;&nbsp;Edit Tender</a>
 		        </li>
 		      </ul>
 		    </div>
 		  </li>
-		</ul>
+		</div>
 
 		<!-- ********************************************************** New Tender **************************************************** -->
 		<!-- ********************************************************** New Tender **************************************************** -->
 
-		<section id="TenderList" class="col-10 offset-md-2">
-			<div class="design"><h3>List of Tenders !</h3><br><p>If you want to upload more documents,then go to the documents section.</p></div>
-			<div class="container">
+		<section id="TenderList" class="col-10 offset-md-2 ">
+			<div class="design wow bounceInUp" data-wow-delay="0.5s"><h3>List of Tenders !</h3><br><p>If you want to upload more documents,then go to the documents section.</p></div>
+			<div class="container wow flipInY" data-wow-delay="1s">
 				<div class="row">
 			      <div class="col-9	border rounded main-section offset-md-1">
 
@@ -171,13 +179,13 @@ require_once('notification.php');
 		<!-- ********************************************************** New Tender **************************************************** -->
 		<!-- ********************************************************** New Tender **************************************************** -->
 
-		<section id="NewTender" class="col-10 offset-md-2">
-			<div class="design"><h3>Fill Up New Tender Form !</h3><br><p>If you want to upload more documents,then go to the documents section.</p></div>
-			<div class="container">
+		<section id="NewTender" class="col-10 offset-md-2 ">
+			<div class="design wow bounceInUp" data-wow-delay="0.5s"><h3>Fill Up New Tender Form !</h3><br><p>If you want to upload more documents,then go to the documents section.</p></div>
+			<div class="container wow flipInY" data-wow-delay="1s">
 			    <div class="row">
 			      <div class="col-9	 border rounded main-section offset-md-1">
 			      	
-			        <form action="formsubmit.php" method="post" id="needs-validation" novalidate enctype="multipart/form-data"> 
+			        <form action="formsubmit.php" method="post" id="tender-validation" novalidate enctype="multipart/form-data"> 
 			            <div class="col-12">
 			               <div class="form-group">
 			                <label class="text-inverse" for="validationCustom01">Department Name</label>
@@ -298,11 +306,15 @@ require_once('notification.php');
 			              <div class="invalid-feedback">Please Upload your Tender Document</div>
 			            </div>
 			          <hr>
-			          <div class="row">
+			          <div class="row" style="text-align: center;">
 			            <div class="col-lg-12 col-sm-12 col-12 text-center">
-			                <button class="btn btn-primary" name="submit" type="submit">Submit Tender</button>
+			                <button class="btn btn-primary" class="uploadtenderevent" name="submit" type="submit">Submit Tender</button>
 			            </div>
-			          </div>  
+			            
+			            
+			          </div> 
+			          <br> 
+			          <div class="UploadTenderMessage alert hidden text-center"></div>
 			        </form>
 			      </div>
 			    </div>  
@@ -313,9 +325,9 @@ require_once('notification.php');
 		<!-- ********************************************************** Upload Documents **************************************************** -->
 		<!-- ********************************************************** Upload Documents **************************************************** -->
 
-		<section id="UploadDocuments" class="col-10 offset-md-2">
-			<div class="design"><h3>Upload Documents !</h3><br><p>If you want to upload more documents,then go to the documents section.</p></div>
-			<div class="container">
+		<section id="UploadDocuments" class="col-10 offset-md-2 ">
+			<div class="design wow bounceInUp" data-wow-delay="0.5s"><h3>Upload Documents !</h3><br><p>If you want to upload more documents,then go to the documents section.</p></div>
+			<div class="container wow flipInY" data-wow-delay="1s">
 				<?php
 					$dir    = 'documents/'; 
 					$files2 = scandir($dir, 1);
@@ -323,7 +335,8 @@ require_once('notification.php');
 				?>
 	            <div class="col-6 border rounded main-section offset-md-2">
 	                <div class="list-group">
-		                <button type="button" class="text-center text-inverse list-group-item list-group-item-action active mybtn " style="background: none!important;display: none;">
+		                <button type="button" class="text-center text-inverse list-group-item list-group-item-action active mybtn ">
+		                	Upload Docs
 		                	
 		                </button>
 		                <hr>
@@ -339,12 +352,16 @@ require_once('notification.php');
 							$f1 = implode(' ',$f1);
 						?>                   
                   	</div><hr>
-	                <form class="form-group" action="uploadform.php" method="post" id="needs-validation" novalidate enctype="multipart/form-data">
-		                <input type="file" name="doc" class="btn btn-default btn-block form-control">
+                  	
+	                <form class="form-group" action="uploadform.php" id="doc-validation" method="post" id="needs-validation" novalidate enctype="multipart/form-data" style="text-align: center;">
+		                <input type="file" name="doc" class="btn btn-default btn-block form-control" required>
 		                <hr>
-		                <button type="submit" name="submit" class="btn btn-primary">
+                  	
+		                <button type="submit" name="submit" class="uploaddocevent btn btn-primary">
 		                    UPLOAD DOCUMENT
 		                </button>
+		                <br><br>
+		                <div class="UploadDocumentMessage alert hidden"></div>
 	                </form>
                 </div>
 			</div>	  
@@ -353,9 +370,9 @@ require_once('notification.php');
 		<!-- ********************************************************** Edit Tender **************************************************** -->
 		<!-- ********************************************************** Edit Tender **************************************************** -->
 
-		<section id="EditTender" class="col-10 offset-md-2">
-			<div class="design"><h3>Edit Tenders !</h3><br><p>Changing your profile options lets </p></div>
-			<div class="container searchedit" >
+		<section id="EditTender" class="col-10 offset-md-2 ">
+			<div class="design wow bounceInUp" data-wow-delay="0.5s"><h3>Edit Tenders !</h3><br><p>Changing your profile options lets </p></div>
+			<div class="container wow flipInY searchedit" data-wow-delay="1s">
 				<div class="row">
 			      <div class="col-9	border rounded main-section offset-md-1">
 					<div class="input-group">
@@ -423,6 +440,167 @@ require_once('notification.php');
       		</div>
     	</div>
   	</div>
+
+<!-- =========================
+    FOOTER SECTION   
+============================== -->
+<footer class="col-10 offset-md-2 ">
+	<br>
+	<footer class="footer1" style="background-color:;justify-content: justify;">
+<div class="">
+
+<div class="row"><!-- row -->
+
+				<div class="col-lg-3 col-md-3 animated fadeInLeft">
+            	<img src="images/capture.png" style="width: 60%;">
+            	<br><br>
+                
+            </div>
+            
+                <div class="col-lg-3 col-md-3"><!-- widgets column left -->
+                <ul class="list-unstyled clear-margins"><!-- widgets -->
+                        
+                        	<li class="widget-container widget_nav_menu"><!-- widgets list -->
+                    
+                                <h1 class="title-widget" style="padding-top: 10px;">Useful Links</h1>
+                                
+                                <ul>
+                                	<li><a  href="#"><i class="fa fa-angle-double-right"></i> About Us</a></li>
+                                    <li><a  href="#"><i class="fa fa-angle-double-right"></i> Contact Us</a></li>
+                                    <li><a  href="#"><i class="fa fa-angle-double-right"></i> Linkdin Profile </a></li>
+                                   
+                                
+                                </ul>
+                    
+							</li>
+                            
+                        </ul>
+                         
+                      
+                </div><!-- widgets column left end -->
+                
+                
+                
+                <div class="col-lg-3 col-md-3"><!-- widgets column left -->
+            
+                <ul class="list-unstyled clear-margins"><!-- widgets -->
+                        
+                        	<li class="widget-container widget_nav_menu"><!-- widgets list -->
+                    
+                                <h1 class="title-widget" style="padding-top: 10px;">Our Projects</h1>
+                                
+                                <ul>
+ 									<li><a  href="#"><i class="fa fa-angle-double-right"></i>  KickStart Career </a></li>
+                                    <li><a  href="#"><i class="fa fa-angle-double-right"></i>  KickStart Management </a></li>
+                                    <li><a  href="#"><i class="fa fa-angle-double-right"></i>  KickStart Dynamic Blog Project</a></li>
+                                    <li><a  href="#"><i class="fa fa-angle-double-right"></i>  KickStart Internship Project </a></li>
+                                    <li><a  href="#"><i class="fa fa-angle-double-right"></i>  KickStart Tender Project </a></li>
+                                    <li><a  href="#"><i class="fa fa-angle-double-right"></i>  KickStart TechFest Project </a></li>
+                                   
+                                    
+                                </ul>
+                    
+							</li>
+                            
+                        </ul>
+                         
+                      
+                </div><!-- widgets column left end -->
+                
+                
+                
+                
+                
+                
+                <div class="col-lg-3 col-md-3"><!-- widgets column center -->
+                
+                   
+                    
+                        <ul class="list-unstyled clear-margins"><!-- widgets -->
+                        
+                        	<li class="widget-container widget_recent_news"><!-- widgets list -->
+                    
+                                <h1 class="title-widget" style="padding-top: 10px;">Contact Detail </h1>
+                                
+                                <div class="footerp"> 
+                                
+                                <h2 class="title-median">KickStart Tender Project</h2>
+                                <div class="input-group">
+                
+                <form>
+                <input type="hidden" name="search_param" value="all" id="search_param">         
+                <input type="text" class="form-control" name="x" placeholder="Search here.."></form>
+                <span class="input-group-btn" style="justify-content: justify;">
+                    <button class="btn btn-default" type="button"><span><i class="fa fa-search" aria-hidden="true"></i>
+</span></button>
+                </span>
+            </div>
+            <br>
+                                <p><b>Helpline Numbers </b>
+
+    <b >(8AM to 10PM):</b>  +91-9601369815, +91-9924677710  </p>
+    
+    <p><b>Folow Us on :</b></p>
+    
+                                </div>
+                                
+                                <div class="social-icons">
+                                
+                                	<ul class="nomargin">
+                                    
+                <a href="https://www.facebook.com/bootsnipp"><i class="fab fa-facebook-square fa-3x social-fb" id="social"></i></a>
+	            <a href="https://twitter.com/bootsnipp"><i class="fab fa-twitter-square fa-3x social-tw" id="social"></i></a>
+	            <a href="https://plus.google.com/+Bootsnipp-page"><i class="fab fa-google-plus-square fa-3x social-gp" id="social"></i></a>
+	            <a href="mailto:bootsnipp@gmail.com"><i class="fa fa-envelope-square fa-3x social-em" id="social"></i></a>
+                                    
+                                    </ul>
+                                </div>
+                    		</li>
+                          </ul>
+                       </div>
+                </div>
+</div>
+</footer>
+<!--header-->
+
+<div class="footer-bottom">
+
+	<div class="">
+
+		<div class="row">
+
+			<div class="col-6">
+
+				<div class="copyright">
+
+					© 2018, KickStart, All rights reserved
+
+				</div>
+
+			</div>
+
+			<div class="col-6">
+
+				<div class="footerdesign">
+
+					 <a href="#">Thanks for visiting our site. </a> |  <a target="_blank" href="https://praharpandya.blogspot.com">Prahar Pandya</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+</footer>
+
+  	<a href="#back-top" class="go-top"><i class="fa fa-angle-up"></i></a>
+<script src="js/jquery.parallax.js"></script>
+
+<script src="js/wow.min.js"></script>
+<script src="js/custom.min.js"></script>
 	</body>
 </html>
 

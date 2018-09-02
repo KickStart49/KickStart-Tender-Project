@@ -1,20 +1,50 @@
-  (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-      var form = document.getElementById('needs-validation');
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-         
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    }, false);
-  })();
+
 
 $(document).ready(function(){
 
+	
+
+		var docform = document.getElementById('doc-validation');
+		docform.addEventListener('submit', function(event) {
+	        if (docform.checkValidity() === false) {
+	         
+	          	$(".UploadDocumentMessage").addClass("alert-danger");
+				$(".UploadDocumentMessage").html("<i class='fa fa-exclamation-circle'> </i> No document has been choosen");
+				$(".UploadDocumentMessage").fadeIn(1000);
+				$(".UploadDocumentMessage").fadeOut(3000);
+				event.preventDefault();
+				event.stopPropagation();
+	        }else{
+
+	        	$(".UploadDocumentMessage").addClass("alert-success");
+				$(".UploadDocumentMessage").html("<i class='fa fa-exclamation-circle'> </i> Document Submitted");
+				$(".UploadDocumentMessage").fadeIn(1000);
+				$(".UploadDocumentMessage").fadeOut(3000);
+					
+
+
+	        }
+	        docform.classList.add('was-validated');
+     	 }, false);
+		
+		var tenderform = document.getElementById('tender-validation');
+		tenderform.addEventListener('submit', function(event) {
+	        if (tenderform.checkValidity() === false) {
+	         
+	          	$(".UploadTenderMessage").addClass("alert-danger");
+				$(".UploadTenderMessage").html("<i class='fa fa-exclamation-circle'> </i>Error occurs while uploading. Ensure that you filled out <b>All Fields</b> correctly");
+				$(".UploadTenderMessage").fadeIn(1000);
+				$(".UploadTenderMessage").fadeOut(5000).delay(2000);
+				event.preventDefault();
+				event.stopPropagation();
+	        }
+	        tenderform.classList.add('was-validated');
+     	 }, false);
+
+		
+	
+
+	
 	$(".ViewTender").click(function(){ 
 	     var formid = $(this).data('id');
 	     var data = {
@@ -140,13 +170,11 @@ $(document).ready(function(){
 	    $('.collapse').on('hidden.bs.collapse', function () {
 	      $(this).parent().css({ 'background-color' : '#2B323C'});
 	    });
-	    $(".sub-menu a").on("click", function(){
-	     $(".nav").find(".active").removeClass("active");
-	     $(this).parent().addClass("active");
-	    });
+	    
 	    $('.collapse').collapse();
-	    $('.1').parent().addClass("active");
+	    
 	}
+
 	
 	function collasidebar(){}
 
@@ -160,3 +188,16 @@ $(document).ready(function(){
 
 
 });
+var editform = document.getElementById('edit-validation');
+		editform.addEventListener('submit', function(event) {
+	        if (editform.checkValidity() === false) {
+	         
+	          	$(".UploadTenderMessage").addClass("alert-danger");
+				$(".UploadTenderMessage").html("<i class='fa fa-exclamation-circle'> </i>Error occurs while updating changes. Ensure that you filled out <b>All Fields</b> correctly");
+				$(".UploadTenderMessage").fadeIn(1000);
+				$(".UploadTenderMessage").fadeOut(5000).delay(2000);
+				event.preventDefault();
+				event.stopPropagation();
+	        }
+	        editform.classList.add('was-validated');
+     	 }, false);

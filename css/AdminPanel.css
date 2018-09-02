@@ -7,6 +7,9 @@ html{
 	nav{
 		box-sizing: border-box;
 		border-bottom-right-radius: 10px;
+		overflow: hidden!important;
+		z-index: 50000!important;
+
 	}
 	nav .nav-link a{
 		color: #d3d3d3;
@@ -53,7 +56,7 @@ html{
     padding-top: 10%;
     padding-bottom: 6%;
 }
-.vertical-menu .active a{
+.vertical-menu .active {
     color: #4CB8E9!important;
 }
 .vertical-menu .sub-menu a{
@@ -163,11 +166,21 @@ box-shadow: 0px 0px 10px 0px rgba(119, 119, 119, 0.75);
 	}
 
 
-
+.btn-primary{
+	background-color: #0E99EC;
+}
+.btn-primary:hover{
+	background-color: #015b70;
+}
+.btn-primary:focus{
+	border:none;
+	box-shadow: none!important;
+}
 /*Scrollbar*/
 
 	body::-webkit-scrollbar,body::-moz-scrollbar {
 	    width: 1em;
+	    position: relative;
 	}
 	 
 	body::-webkit-scrollbar-track,body::-moz-scrollbar-track {
